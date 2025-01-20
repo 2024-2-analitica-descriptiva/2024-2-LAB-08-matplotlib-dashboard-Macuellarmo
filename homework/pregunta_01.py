@@ -92,17 +92,17 @@ def create_visual_for_average_customer_rating(df):
         .describe()
     )
     df.columns = df.columns.droplevel()
-    df = df[['mean', 'min', 'max']]
+    df = df[["mean", "min", "max"]]
     plt.barh(
         y=df.index.values,
-        width=df['max'].values-1,
-        left=df['min'].values,
+        width=df["max"].values-1,
+        left=df["min"].values,
         height=0.9,
         color="lightgray",
         alpha=0.8,
     )
     colors=[
-        "tab:green" if value >= 3.0 else "tab:orange" for value in df['mean'].values
+        "tab:green" if value >= 3.0 else "tab:orange" for value in df["mean"].values
     ]
 
     plt.barh(
@@ -120,7 +120,7 @@ def create_visual_for_average_customer_rating(df):
     plt.gca().spines["top"].set_visible(False)
     plt.gca().spines["right"].set_visible(False)
 
-    plt.savefig("../docs/average_customer_rating.png")
+    plt.savefig("docs/average_customer_rating.png")
     return colors
     
 #Visual for weight distribution
@@ -135,11 +135,11 @@ def create_visual_for_weight_distribution(df):
     
     plt.gca().spines["top"].set_visible(False)
     plt.gca().spines["right"].set_visible(False)
-    plt.savefig("../docs/weight_distribution.png")
+    plt.savefig("docs/weight_distribution.png")
 
 def create_html():
 
-    with open("../docs/index.html", "w") as file:
+    with open("docs/index.html", "w") as file:
         file.write("""
     <!DOCTYPE html>
     <html>
@@ -159,7 +159,7 @@ def create_html():
 
 
 def pregunta_01():
-    
+
     crear_carpeta()
     df = load_data()
     create_visual_for_shipping_per_warehouse(df)
